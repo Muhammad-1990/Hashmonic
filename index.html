@@ -32,13 +32,17 @@
         }
 
         body {
+            height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
             background-color: var(--background-color);
-    font-weight: 600;
-    color: white;
-    margin: 0;
-    padding: 0 15px;
-    font-family: system-ui;
-    font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            padding: 0 15px;
+            font-family: system-ui;
+            font-size: 14px;
         }
 
         .nav {
@@ -205,11 +209,9 @@
 
         .wrapper {
             flex-direction: column;
-    max-width: 600px;
-    margin: auto;
-    display: flex;
-    height: calc(100vh - 100px);
-    justify-content: center;
+            max-width: 600px;
+            align-items: center;
+            margin: auto
         }
 
         .wrapper .fieldset {
