@@ -30,21 +30,28 @@
             --color-light: #ffffff;
             --color-lightAlt: #768390;
         }
+        html {
+  scroll-behavior: smooth;
+}
 
         body {
-             display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    background-color: var(--background-color);
-    font-weight: 600;
-    color: white;
-    margin: 0;
-    padding: 0 15px;
-    font-family: system-ui;
-    font-size: 14px;
-    height: 100vh;
-    max-height: -webkit-fill-available;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            background-color: var(--background-color);
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            padding: 0 15px;
+            font-family: system-ui;
+            font-size: 14px;
+            height: 100vh;
+            max-height: -webkit-fill-available;
         }
+        a {
+  color: var(--color-primaryAlt);
+  text-decoration: none; /* no underline */
+}
 
         .nav {
             list-style: none;
@@ -210,9 +217,9 @@
 
         .wrapper {
             flex-direction: column;
-            max-width: 600px;
-            align-items: center;
-            margin: auto
+    max-width: 600px;
+    align-items: center;
+    margin: 0 auto;
         }
 
         .wrapper .fieldset {
@@ -269,15 +276,48 @@
             cursor: pointer;
         }
 
+        .faq-wrapper{
+            max-width: 695px;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .faq-wrapper ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .faq-wrapper ul li{
+            margin: 32px 0;
+            border-bottom: 1px solid var(--color-primary);
+        }
+        .faq-wrapper ul li:last-child{
+            margin: 32px 0;
+            border-bottom: 1px solid var(--background-color);
+        }
+
+        .set h4{
+            color: var(--color-light);
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .set p{
+            color: var(--color-lightAlt);
+            font-size: 12px;
+            font-weight: 400;
+        }
+
         .footer {
             flex-wrap: wrap;
-    overflow-wrap: anywhere;
-    text-align: right;
-    font-size: 10px;
-    padding: 10px 0;
-    color: var(--color-lightAlt);
-    border-top: 1px solid var(--color-primary);
-    text-transform: uppercase;
+            overflow-wrap: anywhere;
+            text-align: right;
+            font-size: 10px;
+            padding: 10px 0;
+            color: var(--color-lightAlt);
+            border-top: 1px solid var(--color-primary);
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -293,7 +333,7 @@
         <!-- <li>
             <ul class="menu">
                 <li>
-                    <div class="bcode"></div>
+                    <div class="code"></div>
                 </li>
             </ul>
         </li> -->
@@ -301,7 +341,7 @@
     <div class="wrapper">
         <div class="header fieldset ">
             <h2>Encrypt your secrets<b>.</b></h2>
-            <span>Want to know how it works? <span> Learn more</span></span>
+            <span>Want to know how it works? <span> <a href="#faq">Learn more</a></span></span>
         </div>
         <div class="fieldset">
             <input id="p" type="password" autocomplete="off" placeholder="Password">
@@ -312,12 +352,55 @@
             <div id="clipboard" class="paste"></div>
         </div>
         <div class="fieldset">
-            <span id="d" class="decrypt" onclick="s.value=CryptoJS.AES.decrypt(s.value,p.value).toString(CryptoJS.enc.Utf8)">Decrypt</span>
-            <span id="e" class="encrypt" onclick="s.value=CryptoJS.AES.encrypt(s.value,p.value)">
-                <div class="logo"></div>
-            </span>
+            <span id="d" class="decrypt">Decrypt</span>
+            <span id="e" class="encrypt"><div class="logo"></div></span>
         </div>
     </div>
+
+    <div id="faq" class="faq-wrapper">
+        <ul>
+            <li>
+                <div class="set">
+                    <h4>What is Hashmonic</h4>
+                    <p>Hashmonic is a simple static website that performs client-side encryption. It is decentralised and hosted on the ipfs network. This means 
+                        that it will always be available long as the ipfs network operates. No changes can me made to this website thus enforcing its validility.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="set">
+                    <h4>Why was hashmonic developed</h4>
+                    <p>We developed Hashmonic to provide a simple and secure way for everyday users to be able to encrypt data, without having to worry about the risks and complexities involved.</p>
+                </div>
+            </li>
+            <li>
+                <div class="set">
+                    <h4>How safe is Hashmonic</h4>
+                    <p>Hashmonic uses SHA256 encryption algorythm.</p>
+                </div>
+            </li>
+            <li>
+                <div class="set">
+                    <h4>How does the encryption work</h4>
+                    <p>The encryption algorythm is performed by cryptoJS v4.1.1 library. This encryption is performed on your device. Your data is never recored and never leaves your device.</p>
+                </div>
+            </li>
+            <li>
+                <div class="set">
+                    <h4>How can i trust Hashmonic</h4>
+                    <p>Hashmonic is a static unchangable website. You can verify the cryptojs v4.1.1 library hash to ensure no malicious changes have been made. This website does not 
+                        download any external resources or make any requests. It can perform encryptions and decryptions in offline mode.</p>
+                </div>
+            </li>
+            <li>
+                <div class="set">
+                    <h4>Why use Hashmonic</h4>
+                    <p>The best use case for Hashmonic is to enable a user to be able to encrypt data to be safely stored digitally.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
     <div class="footer">
         <span>8e3b0117f4df4be452c0b6af5b8f0a0acf9d4ade23d08d55d7e312af22077762</span>
     </div>
@@ -350,6 +433,16 @@
             if ((s.value != '') && (clipboard.classList.contains("paste"))) {
                 clipboard.classList.remove("paste")
                 clipboard.classList.add("copy")
+            }
+        })
+        d.addEventListener("click", function () {
+            if ((s.value != '') && (p.value != '')) {
+                s.value=CryptoJS.AES.decrypt(s.value,p.value).toString(CryptoJS.enc.Utf8)
+            }
+        })
+        e.addEventListener("click", function () {
+            if ((s.value != '') && (p.value != '')) {
+                s.value=CryptoJS.AES.encrypt(s.value,p.value)
             }
         })
 
