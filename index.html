@@ -32,17 +32,13 @@
         }
 
         body {
-            height: 100vh;
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
             background-color: var(--background-color);
-            font-weight: 600;
-            color: white;
-            margin: 0;
-            padding: 0 15px;
-            font-family: system-ui;
-            font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    padding: 0 15px;
+    font-family: system-ui;
+    font-size: 14px;
         }
 
         .nav {
@@ -71,6 +67,14 @@
             width: 24px;
             height: 24px;
             background: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiB2aWV3Qm94PSIwIDAgMzIgMzIiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnFyY29kZXtmaWxsOiM3NjgzOTA7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0icXJjb2RlIiBkPSJNMTAgMmgtOHY4aDh2LTh6TTEyIDB2MCAxMmgtMTJ2LTEyaDEyek00IDRoNHY0aC00ek0zMCAyaC04djhoOHYtOHpNMzIgMHYwIDEyaC0xMnYtMTJoMTJ6TTI0IDRoNHY0aC00ek0xMCAyMmgtOHY4aDh2LTh6TTEyIDIwdjAgMTJoLTEydi0xMmgxMnpNNCAyNGg0djRoLTR6TTE0IDBoMnYyaC0yek0xNiAyaDJ2MmgtMnpNMTQgNGgydjJoLTJ6TTE2IDZoMnYyaC0yek0xNCA4aDJ2MmgtMnpNMTYgMTBoMnYyaC0yek0xNCAxMmgydjJoLTJ6TTE0IDE2aDJ2MmgtMnpNMTYgMThoMnYyaC0yek0xNCAyMGgydjJoLTJ6TTE2IDIyaDJ2MmgtMnpNMTQgMjRoMnYyaC0yek0xNiAyNmgydjJoLTJ6TTE0IDI4aDJ2MmgtMnpNMTYgMzBoMnYyaC0yek0zMCAxNmgydjJoLTJ6TTIgMTZoMnYyaC0yek00IDE0aDJ2MmgtMnpNMCAxNGgydjJoLTJ6TTggMTRoMnYyaC0yek0xMCAxNmgydjJoLTJ6TTEyIDE0aDJ2MmgtMnpNMTggMTZoMnYyaC0yek0yMCAxNGgydjJoLTJ6TTIyIDE2aDJ2MmgtMnpNMjQgMTRoMnYyaC0yek0yNiAxNmgydjJoLTJ6TTI4IDE0aDJ2MmgtMnpNMzAgMjBoMnYyaC0yek0xOCAyMGgydjJoLTJ6TTIwIDE4aDJ2MmgtMnpNMjIgMjBoMnYyaC0yek0yNiAyMGgydjJoLTJ6TTI4IDE4aDJ2MmgtMnpNMzAgMjRoMnYyaC0yek0xOCAyNGgydjJoLTJ6TTIwIDIyaDJ2MmgtMnpNMjQgMjJoMnYyaC0yek0yNiAyNGgydjJoLTJ6TTI4IDIyaDJ2MmgtMnpNMzAgMjhoMnYyaC0yek0yMCAyNmgydjJoLTJ6TTIyIDI4aDJ2MmgtMnpNMjQgMjZoMnYyaC0yek0yNiAyOGgydjJoLTJ6TTIwIDMwaDJ2MmgtMnpNMjQgMzBoMnYyaC0yek0yOCAzMGgydjJoLTJ6Ij48L3BhdGg+Cjwvc3ZnPg==");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .bcode {
+            width: 24px;
+            height: 24px;
+            background: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiB2aWV3Qm94PSIwIDAgMzIgMzIiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLmJhcmNvZGV7ZmlsbDojNzY4MzkwO30KPC9zdHlsZT4KPHBhdGggY2xhc3M9ImJhcmNvZGUiIGQ9Ik0wIDRoNHYyMGgtNHpNNiA0aDJ2MjBoLTJ6TTEwIDRoMnYyMGgtMnpNMTYgNGgydjIwaC0yek0yNCA0aDJ2MjBoLTJ6TTMwIDRoMnYyMGgtMnpNMjAgNGgxdjIwaC0xek0xNCA0aDF2MjBoLTF6TTI3IDRoMXYyMGgtMXpNMCAyNmgydjJoLTJ6TTYgMjZoMnYyaC0yek0xMCAyNmgydjJoLTJ6TTIwIDI2aDJ2MmgtMnpNMzAgMjZoMnYyaC0yek0yNCAyNmg0djJoLTR6TTE0IDI2aDR2MmgtNHoiPjwvcGF0aD4KPC9zdmc+");
             background-repeat: no-repeat;
             background-size: contain;
         }
@@ -201,9 +205,11 @@
 
         .wrapper {
             flex-direction: column;
-            max-width: 600px;
-            align-items: center;
-            margin: auto
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    height: calc(100vh - 100px);
+    justify-content: center;
         }
 
         .wrapper .fieldset {
@@ -217,7 +223,7 @@
         input[type=password],
         input[type=text] {
             width: 100%;
-            padding: 18px 32px;
+            padding: 18px 48px 18px 16px;
             border: 1px solid var(--color-secondary);
             border-radius: 16px;
             background: var(--color-primary);
@@ -250,8 +256,8 @@
 
         .decrypt {
             padding: 16px 32px;
-            background-color: #2d333b6b;
             border-radius: 16px;
+            border: 1px solid var(--color-primary);
         }
 
         .code:hover,
@@ -281,10 +287,10 @@
         </li>
         <!-- <li>
             <ul class="menu">
-                    <li>
-                        <div class="code"></div>
-                    </li>
-                </ul>
+                <li>
+                    <div class="bcode"></div>
+                </li>
+            </ul>
         </li> -->
     </ul>
     <div class="wrapper">
