@@ -1,14 +1,14 @@
-## Hashmonic
+# Hashmonic
 
 
-### What is Hashmonic
-## Hashmonic is a simple, static website that performs encryption and decryption inside your web browser. It is hosted on the ipfs network, which makes it decentralized and unchangable. The source code is freely available for download and offline usage.
+## What is Hashmonic
+### Hashmonic is a simple, static website that performs encryption and decryption inside your web browser. It is hosted on the ipfs network, which makes it decentralized and unchangable. The source code is freely available for download and offline usage.
 
-### Why was hashmonic developed
-## We developed Hashmonic to provide a simple and secure way for everyday users to be able to encrypt/decrypt data, without having to worry about the risks and complexities involved. Hashmonic allows you to confidently store encrypted data digitally without the risks of exposure had they been stored in plain text. Hashmonic is only responsible for encrypting and decrypting your data, where and how you chose to store that data is left totaly up to you.
+## Why was hashmonic developed
+### We developed Hashmonic to provide a simple and secure way for everyday users to be able to encrypt/decrypt data, without having to worry about the risks and complexities involved. Hashmonic allows you to confidently store encrypted data digitally without the risks of exposure had they been stored in plain text. Hashmonic is only responsible for encrypting and decrypting your data, where and how you chose to store that data is left totaly up to you.
 
-### How safe is Hashmonic
-## Hashmonic uses a user defined password and the SHA256 AES encryption algorythm defined within the CryptoJS v4.1.1 javascript library.
+## How safe is Hashmonic
+### Hashmonic uses a user defined password and the SHA256 AES encryption algorythm defined within the CryptoJS v4.1.1 javascript library.
  
 ## How does the encryption work
 ### The encryption and decryption is performed in the browser on your device. Your data is never recored and never leaves your device. Your password is strength checked and used by the encryption algorythm.
