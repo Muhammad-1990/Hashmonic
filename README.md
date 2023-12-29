@@ -1,5 +1,7 @@
 # Hashmonic
 
+![image](https://github.com/Muhammad-1990/Hashmonic/assets/53302444/bb3d04c0-8825-4e87-ba53-61673c4c19f6)
+
 
 ## What is Hashmonic
 Hashmonic is a simple, static website that performs encryption and decryption inside your web browser. Download or clone the repo and use it locally on your PC, which makes it decentralized and unchangable. The source code is freely available for offline usage.
