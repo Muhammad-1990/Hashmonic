@@ -10,6 +10,16 @@
     "orientation": "portrait",
     "background_color": "#22272e",
     "theme_color": "#1d90f5",
+    "protocol_handlers": [
+      {
+        "protocol": "web+crypto",
+        "url": {
+          "scheme": "https",
+          "host": "rad-raindrop-97d9ea.netlify.app",
+          "path": "/index.html"
+        }
+      }
+    ],
     "icons": [
       {
         "src": "favicon.ico",

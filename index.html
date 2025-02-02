@@ -26,9 +26,9 @@
     <meta name="email" content="hashmonic@gmail.com" />
 
 
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/assets/manifest-icon-512.png"/>
+    <link rel="icon" href="https://rad-raindrop-97d9ea.netlify.app/favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="https://rad-raindrop-97d9ea.netlify.app/manifest.json" />
+    <link rel="apple-touch-icon" href="https://rad-raindrop-97d9ea.netlify.app/assets/manifest-icon-512.png"/>
     <style>
         :root {
             --background-color: #22272e;
@@ -678,8 +678,8 @@
             const params = new URLSearchParams({
                 dapp_encryption_public_key: bs58.encode(dappKeyPair.publicKey),
                 cluster: "mainnet-beta",
-                app_url: "https://rad-raindrop-97d9ea.netlify.app/",
-                redirect_link: "Hashmonic://rad-raindrop-97d9ea.netlify.app/",
+                app_url: "web+crypto://rad-raindrop-97d9ea.netlify.app/",
+                redirect_link: "web+crypto://rad-raindrop-97d9ea.netlify.app/",
             });
 
             const connectURL = `https://phantom.app/ul/v1/connect?${params.toString()}`;
