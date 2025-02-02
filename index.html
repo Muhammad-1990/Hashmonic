@@ -672,17 +672,20 @@
                         return;
                     }
 
-                    try {
-                        const resp = await window.phantom.solana.connect();
-                        const publicKey = resp.publicKey.toString();
-                        const truncatedKey = `${publicKey.slice(0, 5)}...${publicKey.slice(-5)}`;
-                        walletStatus.textContent = truncatedKey;
-                        connectButton.textContent = "Connected";
-                        connectButton.disabled = true; // Disable button once connected
-                    } catch (error) {
-                        console.error("Connection error:", error);
-                        walletStatus.textContent = "Connection Failed";
-                    }
+                    const deepLink  = "https://phantom.app/ul/v1/connect";
+                    window.location.href = deepLink;
+
+                    // try {
+                    //     const resp = await window.phantom.solana.connect();
+                    //     const publicKey = resp.publicKey.toString();
+                    //     const truncatedKey = `${publicKey.slice(0, 5)}...${publicKey.slice(-5)}`;
+                    //     walletStatus.textContent = truncatedKey;
+                    //     connectButton.textContent = "Connected";
+                    //     connectButton.disabled = true; // Disable button once connected
+                    // } catch (error) {
+                    //     console.error("Connection error:", error);
+                    //     walletStatus.textContent = "Connection Failed";
+                    // }
                 }
 
 
