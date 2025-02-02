@@ -670,24 +670,7 @@
                 const connectButton = document.getElementById('connectButton');
                 const walletStatus = document.getElementById('walletStatus');
 
-                async function connectToPhantom() {
-                    if (!window.phantom || !window.phantom.solana) {
-                        walletStatus.textContent = "Phantom Wallet Not Detected";
-                        return;
-                    }
-
-                    try {
-                        const resp = await window.phantom.solana.connect();
-                        const publicKey = resp.publicKey.toString();
-                        const truncatedKey = `...${publicKey.slice(-5)}`;
-                        walletStatus.textContent = truncatedKey;
-                        connectButton.textContent = "Connected";
-                        connectButton.disabled = true; // Disable button once connected
-                    } catch (error) {
-                        console.error("Connection error:", error);
-                        walletStatus.textContent = "Connection Failed";
-                    }
-                }
+                
 
 
                 e.addEventListener('click', encryptionHandler);
@@ -697,6 +680,26 @@
                 alert('Please install Phantom Wallet to use this dapp');
             }
         }
+
+        async function connectToPhantom() {
+                    if (!window.phantom || !window.phantom.solana) {
+                        walletStatus.textContent = "Phantom Wallet Not Detected";
+                        return;
+                    }
+                    window.location.href = "https://phantom.app/ul/v1/connect";
+
+                    // try {
+                    //     const resp = await window.phantom.solana.connect();
+                    //     const publicKey = resp.publicKey.toString();
+                    //     const truncatedKey = `...${publicKey.slice(-5)}`;
+                    //     walletStatus.textContent = truncatedKey;
+                    //     connectButton.textContent = "Connected";
+                    //     connectButton.disabled = true; // Disable button once connected
+                    // } catch (error) {
+                    //     console.error("Connection error:", error);
+                    //     walletStatus.textContent = "Connection Failed";
+                    // }
+                }
 
 
 
