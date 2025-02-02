@@ -659,6 +659,7 @@
         }
 
         function generateNewKeypair() {
+            
                 return Keypair.generate();
             }
         window.onload = async () => {
@@ -674,11 +675,17 @@
                 const connectButton = document.getElementById('connectButton');
                 const walletStatus = document.getElementById('walletStatus');
 
-                
-                const connectKeypair = generateNewKeypair();
+                // Create a key pair and use destructuring assignment to assign to variables
+                const { publicKey, privateKey } = await crypto.subtle.generateKey(
+                    {
+                        name: "X25519",
+                    },
+                    true,
+                    ["deriveKey", "deriveBits"],
+                );
                 const connectParams = new URLSearchParams({
-                    dapp_encryption_public_key: connectKeypair.publicKey.toString(),
-                    app_url: "https://rad-raindrop-97d9ea.netlify.app/manifest.json",
+                    dapp_encryption_public_key: publicKey.toString(),
+                    app_url: "https://rad-raindrop-97d9ea.netlify.app",
                     redirect_link: "https://rad-raindrop-97d9ea.netlify.app/callback"
                 });
 
@@ -699,7 +706,22 @@
                         walletStatus.textContent = "Phantom Wallet Not Detected";
                         return;
                     }
-                    window.open("https://phantom.app/ul/v1/connect", '_system');
+
+                    // Create a key pair and use destructuring assignment to assign to variables
+                const { publicKey, privateKey } = await crypto.subtle.generateKey(
+                    {
+                        name: "X25519",
+                    },
+                    true,
+                    ["deriveKey", "deriveBits"],
+                );
+                const connectParams = new URLSearchParams({
+                    dapp_encryption_public_key: publicKey.toString(),
+                    app_url: "https://rad-raindrop-97d9ea.netlify.app",
+                    redirect_link: "https://rad-raindrop-97d9ea.netlify.app/callback"
+                });
+
+                    window.open(`https://phantom.app/ul/v1/connect?${connectParams.toString()}`, '_system');
 
                     // try {
                     //     const resp = await window.phantom.solana.connect();
