@@ -691,11 +691,6 @@
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
                     .register('./service-worker.js');
-
-                    navigator.registerProtocolHandler(
-                        'web+hashmonic',
-                        '/?type=%s'
-                    );
             }
 
             hashWebpage().then(result => webhash.innerText = result).catch(error => console.error(error));
