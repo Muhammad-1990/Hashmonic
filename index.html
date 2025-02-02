@@ -676,6 +676,21 @@
             }
         }
 
+        async function connectToPhantomApp() {
+            const dappKeyPair = nacl.box.keyPair();
+
+            const params = new URLSearchParams({
+                dapp_encryption_public_key: bs58.encode(dappKeyPair.publicKey),
+                cluster: "mainnet-beta",
+                app_url: "https://rad-raindrop-97d9ea.netlify.app/",
+                redirect_link: "https://rad-raindrop-97d9ea.netlify.app/",
+            });
+
+            const connectURL = `https://phantom.app/ul/v1/connect?${params.toString()}`;
+
+            window.location.href = connectURL;
+        }
+
         window.onload = async () => {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
@@ -686,28 +701,13 @@
 
             // Check if Phantom Wallet is available
             if ('phantom' in window) {
-                connectButton.disabled = false;         
                 connectButton.addEventListener('click', connectToPhantomPlugin);
-
-                
             } else {
-                const dappKeyPair = nacl.box.keyPair();
-
-                const params = new URLSearchParams({
-                    dapp_encryption_public_key: bs58.encode(dappKeyPair.publicKey),
-                    cluster: "mainnet-beta",
-                    app_url: "https://rad-raindrop-97d9ea.netlify.app/",
-                    redirect_link: "https://rad-raindrop-97d9ea.netlify.app/",
-                });
-
-                const connectURL = `https://phantom.app/ul/v1/connect?${params.toString()}`;
-                console.log("Connect URL:", connectURL);
-
-                window.location.href = connectURL;
+                connectButton.addEventListener('click', connectToPhantomApp);
             }
 
             e.addEventListener('click', encryptionHandler);
-                d.addEventListener('click', decryptionHandler);
+            d.addEventListener('click', decryptionHandler);
         }
 
 
