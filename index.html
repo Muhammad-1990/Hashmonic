@@ -89,25 +89,28 @@
             background-repeat: no-repeat;
             background-size: contain;
         }
+
         .text-button {
-        background-color: #007bff; /* Blue background */
-        border: none;
-        color: white; /* Text color */
-        padding: 10px 15px; /* Padding around the text */
-        border-radius: 5px;
-        cursor: pointer;
-        vertical-align: middle;
-    }
+            background-color: #007bff;
+            /* Blue background */
+            border: none;
+            color: white;
+            /* Text color */
+            padding: 10px 15px;
+            /* Padding around the text */
+            border-radius: 5px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
 
-    /* Style when connected - you might want to change the background color here */
-    .text-button.connected {
-        background-color: #28a745; /* Green when connected */
-    }
+        /* Style when connected - you might want to change the background color here */
+        .text-button.connected {
+            background-color: #28a745;
+            /* Green when connected */
+        }
 
-    #walletStatus {
-        margin-left: 10px;
-        vertical-align: middle;
-    }
+        #walletStatus {
+        }
 
         .code {
             width: 24px;
@@ -366,7 +369,7 @@
                 <h2>Hashmonic</h2>
             </div>
         </li>
-        <li class="wallet-status" style="margin-left: auto;">
+        <li class="wallet-status">
             <span id="walletStatus">Not Connected</span>
             <button id="connectButton" class="text-button">Connect</button>
         </li>
@@ -374,7 +377,8 @@
     <div class="wrapper">
         <div class="header fieldset ">
             <h2>Encrypt your secrets<b>.</b></h2>
-            <span>Want to know how it works? <span><a href="https://github.com/Muhammad-1990/Hashmonic">Learn more</a></span></span>
+            <span>Want to know how it works? <span><a href="https://github.com/Muhammad-1990/Hashmonic">Learn
+                        more</a></span></span>
         </div>
 
         <div class="fieldset">
@@ -593,7 +597,7 @@
                 const decryptedData = await decryptDataWithSignature(encryptedData.split('.')[0], encryptedData.split('.')[1]);
 
                 console.log("Decrypted data:", decryptedData);
-                
+
                 s.value = decryptedData;
             } catch (error) {
                 console.error("Error decrypting data:", error);
@@ -675,7 +679,7 @@
                     try {
                         const resp = await window.phantom.solana.connect();
                         const publicKey = resp.publicKey.toString();
-                        const truncatedKey = `${publicKey.slice(0, 5)}...${publicKey.slice(-5)}`;
+                        const truncatedKey = `...${publicKey.slice(-5)}`;
                         walletStatus.textContent = truncatedKey;
                         connectButton.textContent = "Connected";
                         connectButton.disabled = true; // Disable button once connected
@@ -694,7 +698,7 @@
             }
         }
 
-        
+
 
     </script>
 
