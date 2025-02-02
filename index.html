@@ -678,8 +678,8 @@
             const params = new URLSearchParams({
                 dapp_encryption_public_key: bs58.encode(dappKeyPair.publicKey),
                 cluster: "mainnet-beta",
-                app_url: "hashmonic://rad-raindrop-97d9ea.netlify.app/",
-                redirect_link: "hashmonic://rad-raindrop-97d9ea.netlify.app/",
+                app_url: "https://rad-raindrop-97d9ea.netlify.app/",
+                redirect_link: "web+hashmonic://rad-raindrop-97d9ea.netlify.app/",
             });
 
             const connectURL = `https://phantom.app/ul/v1/connect?${params.toString()}`;
