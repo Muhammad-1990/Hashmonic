@@ -1,5 +1,6 @@
 {
     "name": "Hashmonic",
+    "title": "Hashmonic",
     "short_name": "Hashmonic",
     "description": "Confidently store encrypted data digitally.",
     "start_url": "/index.html",
