@@ -24,13 +24,11 @@
     <meta name="github" content="github.com/muhammad-1990/hashmonic" />
     <meta name="twitter" content="@hashmonic" />
     <meta name="email" content="hashmonic@gmail.com" />
-    <meta name="version" content="4.1.1" />
-    <meta name="algo" content="SHA256" />
-    <meta name="hash" content="8e3b0117f4df4be452c0b6af5b8f0a0acf9d4ade23d08d55d7e312af22077762" />
+
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json" />
-
+    <link rel="apple-touch-icon" href="/assets/manifest-icon-512.png"/>
     <style>
         :root {
             --background-color: #22272e;
@@ -108,8 +106,6 @@
             background-color: #28a745;
             /* Green when connected */
         }
-
-        #walletStatus {}
 
         .code {
             width: 24px;
@@ -683,10 +679,10 @@
                 dapp_encryption_public_key: bs58.encode(dappKeyPair.publicKey),
                 cluster: "mainnet-beta",
                 app_url: "https://rad-raindrop-97d9ea.netlify.app/",
-                redirect_link: "https://rad-raindrop-97d9ea.netlify.app/",
+                redirect_link: "Hashmonic://rad-raindrop-97d9ea.netlify.app/",
             });
 
-            const connectURL = `https://phantom.app/ul/v1/connect?${params.toString()}`;
+            const connectURL = `Hashmonic://phantom.app/ul/v1/connect?${params.toString()}`;
 
             window.location.href = connectURL;
         }
