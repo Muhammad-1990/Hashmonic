@@ -12,12 +12,8 @@
     "theme_color": "#1d90f5",
     "protocol_handlers": [
       {
-        "protocol": "hashmonic",
-        "url": {
-          "scheme": "https",
-          "host": "rad-raindrop-97d9ea.netlify.app",
-          "path": "/index.html"
-        }
+        "protocol": "web+hashmonic",
+        "url": "/?type=%s"
       }
     ],
     "icons": [
