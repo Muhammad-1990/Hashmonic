@@ -109,8 +109,7 @@
             /* Green when connected */
         }
 
-        #walletStatus {
-        }
+        #walletStatus {}
 
         .code {
             width: 24px;
@@ -372,7 +371,6 @@
         <li class="wallet-status">
             <span id="walletStatus"></span>
             <button id="connectButton" class="text-button">Connect</button>
-            <a id="phantomButton" href="https://phantom.app/ul/v1/connect" target="_blank">go to phantom</a>
         </li>
     </ul>
     <div class="wrapper">
@@ -430,7 +428,8 @@
     </script>
 
     <script type="module">
-        const { PublicKey, Keypair } = solanaWeb3;
+        import bs58 from 'https://cdn.jsdelivr.net/npm/bs58@6.0.0/+esm';
+        const { PublicKey } = solanaWeb3;
 
         async function encryptDataWithSignature(data) {
             try {
@@ -658,10 +657,25 @@
             }
         }
 
-        function generateNewKeypair() {
-            
-                return Keypair.generate();
+        async function connectToPhantomPlugin() {
+            if (!window.phantom || !window.phantom.solana) {
+                walletStatus.textContent = "Phantom Wallet Not Detected";
+                return;
             }
+
+            try {
+                const resp = await window.phantom.solana.connect();
+                const publicKey = resp.publicKey.toString();
+                const truncatedKey = `...${publicKey.slice(-5)}`;
+                walletStatus.textContent = truncatedKey;
+                connectButton.textContent = "Connected";
+                connectButton.disabled = true; // Disable button once connected
+            } catch (error) {
+                console.error("Connection error:", error);
+                walletStatus.textContent = "Connection Failed";
+            }
+        }
+
         window.onload = async () => {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
@@ -672,69 +686,29 @@
 
             // Check if Phantom Wallet is available
             if ('phantom' in window) {
-                const connectButton = document.getElementById('connectButton');
-                const walletStatus = document.getElementById('walletStatus');
+                connectButton.disabled = false;         
+                connectButton.addEventListener('click', connectToPhantomPlugin);
 
-                // Create a key pair and use destructuring assignment to assign to variables
-                const { publicKey, privateKey } = await crypto.subtle.generateKey(
-                    {
-                        name: "X25519",
-                    },
-                    true,
-                    ["deriveKey", "deriveBits"],
-                );
-                const connectParams = new URLSearchParams({
-                    dapp_encryption_public_key: publicKey.toString(),
-                    app_url: "https://rad-raindrop-97d9ea.netlify.app",
-                    redirect_link: "https://rad-raindrop-97d9ea.netlify.app/callback"
-                });
-
-                const connectURL = `https://phantom.app/ul/v1/connect?${connectParams.toString()}`;
-                console.log("Connect URL:", connectURL);
-                phantomButton.href = connectURL;
-
-                e.addEventListener('click', encryptionHandler);
-                d.addEventListener('click', decryptionHandler);
-                connectButton.addEventListener('click', connectToPhantom);
+                
             } else {
-                alert('Please install Phantom Wallet to use this dapp');
-            }
-        }
+                const dappKeyPair = nacl.box.keyPair();
 
-        async function connectToPhantom() {
-                    if (!window.phantom || !window.phantom.solana) {
-                        walletStatus.textContent = "Phantom Wallet Not Detected";
-                        return;
-                    }
-
-                    // Create a key pair and use destructuring assignment to assign to variables
-                const { publicKey, privateKey } = await crypto.subtle.generateKey(
-                    {
-                        name: "X25519",
-                    },
-                    true,
-                    ["deriveKey", "deriveBits"],
-                );
-                const connectParams = new URLSearchParams({
-                    dapp_encryption_public_key: publicKey.toString(),
-                    app_url: "https://rad-raindrop-97d9ea.netlify.app",
-                    redirect_link: "https://rad-raindrop-97d9ea.netlify.app/callback"
+                const params = new URLSearchParams({
+                    dapp_encryption_public_key: bs58.encode(dappKeyPair.publicKey),
+                    cluster: "mainnet-beta",
+                    app_url: "https://rad-raindrop-97d9ea.netlify.app/",
+                    redirect_link: "https://rad-raindrop-97d9ea.netlify.app/",
                 });
 
-                    window.open(`https://phantom.app/ul/v1/connect?${connectParams.toString()}`, '_system');
+                const connectURL = `https://phantom.app/ul/v1/connect?${params.toString()}`;
+                console.log("Connect URL:", connectURL);
 
-                    // try {
-                    //     const resp = await window.phantom.solana.connect();
-                    //     const publicKey = resp.publicKey.toString();
-                    //     const truncatedKey = `...${publicKey.slice(-5)}`;
-                    //     walletStatus.textContent = truncatedKey;
-                    //     connectButton.textContent = "Connected";
-                    //     connectButton.disabled = true; // Disable button once connected
-                    // } catch (error) {
-                    //     console.error("Connection error:", error);
-                    //     walletStatus.textContent = "Connection Failed";
-                    // }
-                }
+                window.location.href = connectURL;
+            }
+
+            e.addEventListener('click', encryptionHandler);
+                d.addEventListener('click', decryptionHandler);
+        }
 
 
 
