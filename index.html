@@ -89,6 +89,25 @@
             background-repeat: no-repeat;
             background-size: contain;
         }
+        .text-button {
+        background-color: #007bff; /* Blue background */
+        border: none;
+        color: white; /* Text color */
+        padding: 10px 15px; /* Padding around the text */
+        border-radius: 5px;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+    /* Style when connected - you might want to change the background color here */
+    .text-button.connected {
+        background-color: #28a745; /* Green when connected */
+    }
+
+    #walletStatus {
+        margin-left: 10px;
+        vertical-align: middle;
+    }
 
         .code {
             width: 24px;
@@ -346,6 +365,10 @@
                 <div class="logo"></div>
                 <h2>Hashmonic</h2>
             </div>
+        </li>
+        <li class="wallet-status" style="margin-left: auto;">
+            <span id="walletStatus">Not Connected</span>
+            <button id="connectButton" class="text-button">Connect</button>
         </li>
     </ul>
     <div class="wrapper">
@@ -630,7 +653,7 @@
             }
         }
 
-        window.onload = () => {
+        window.onload = async () => {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
                     .register('./service-worker.js');
@@ -640,11 +663,32 @@
 
             // Check if Phantom Wallet is available
             if ('phantom' in window) {
-                const phantom = window.phantom;
-                console.log('Phantom Wallet is installed:', phantom.isPhantom);
+                const connectButton = document.getElementById('connectButton');
+                const walletStatus = document.getElementById('walletStatus');
+
+                async function connectToPhantom() {
+                    if (!window.phantom || !window.phantom.solana) {
+                        walletStatus.textContent = "Phantom Wallet Not Detected";
+                        return;
+                    }
+
+                    try {
+                        const resp = await window.phantom.solana.connect();
+                        const publicKey = resp.publicKey.toString();
+                        const truncatedKey = `${publicKey.slice(0, 5)}...${publicKey.slice(-5)}`;
+                        walletStatus.textContent = truncatedKey;
+                        connectButton.textContent = "Connected";
+                        connectButton.disabled = true; // Disable button once connected
+                    } catch (error) {
+                        console.error("Connection error:", error);
+                        walletStatus.textContent = "Connection Failed";
+                    }
+                }
+
 
                 e.addEventListener('click', encryptionHandler);
                 d.addEventListener('click', decryptionHandler);
+                connectButton.addEventListener('click', connectToPhantom);
             } else {
                 alert('Please install Phantom Wallet to use this dapp');
             }
