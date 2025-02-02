@@ -686,7 +686,7 @@
                         walletStatus.textContent = "Phantom Wallet Not Detected";
                         return;
                     }
-                    window.location.href = "phantom://v1/connect";
+                    window.open("https://phantom.app/ul/v1/connect", '_system');
 
                     // try {
                     //     const resp = await window.phantom.solana.connect();
